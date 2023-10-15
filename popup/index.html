@@ -12,19 +12,38 @@
 
 <body>
     <div class="top-bar">
-        <input type="search" id="search" placeholder="Search" autofocus>
-        <button class="round-border-button" id="add-button"></button>
+        <button class="top-bar-button" id="filter-button">
+            <span class="top-bar-button-content">
+                <img src="icons/filter.svg" alt="filter.svg" height="12" width="12" />
+                <label>Filters</label>
+            </span>
+        </button>
+        <button class="top-bar-button" id="sort-button">
+            <span class="top-bar-button-content">
+                <img src="icons/sort.svg" alt="sort.svg" height="14" width="14" />
+                <label>Sort</label>
+            </span>
+        </button>
+        <button class="top-bar-button" id="add-button">
+            <span class="top-bar-button-content">
+                <img src="icons/plus.svg" alt="plus.svg" height="14" width="14"/>
+                <label>New Series</label>
+            </span>
+        </button>
     </div>
-    <div class="content series-cards" id="series-cards-container"></div>
-    <template id="series-card-template">
-        <div class="card">
-            <div class="header" id="data-header"></div>
-            <div class="body" id="data-body">
-                <label class="card-info-label" id="series-info"></label>
-                <button class="card-link-button hide" id="link-button"></button>
+    <div class="content">
+        <input type="search" id="search" placeholder="Search series..." autofocus>
+        <div class="series-cards" id="series-cards-container"></div>
+        <template id="series-card-template">
+            <div class="card">
+                <div class="header" id="data-header"></div>
+                <div class="body" id="data-body">
+                    <label class="card-info-label" id="series-info"></label>
+                    <button class="card-link-button hide" id="link-button"></button>
+                </div>
             </div>
-        </div>
-    </template>
+        </template>
+    </div>
 </body>
 
 </html>

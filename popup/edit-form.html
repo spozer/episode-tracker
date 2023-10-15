@@ -13,9 +13,24 @@
 <body>
     <form id="edit-form">
         <div class="top-bar">
-            <button class="round-border-button" type="button" id="back-button"></button>
-            <button class="round-border-button long-press-button hide" type="button" id="delete-button"></button>
-            <button class="round-border-button" type="submit" id="apply-button"></button>
+            <button class="top-bar-button" type="button" id="back-button">
+                <span class="top-bar-button-content">
+                    <img src="icons/arrow-left.svg" alt="arrow-left.svg" height="14" width="14" />
+                    <label>Back</label>
+                </span>
+            </button>
+            <button class="top-bar-button long-press-button hide" type="button" id="delete-button">
+                <span class="top-bar-button-content">
+                    <img src="icons/trash.svg" alt="trash.svg" height="14" width="14" />
+                    <label>Delete</label>
+                </span>
+            </button>
+            <button class="top-bar-button" type="submit" id="apply-button">
+                <span class="top-bar-button-content">
+                    <img src="icons/check.svg" alt="check.svg" height="14" width="14" />
+                    <label>Apply</label>
+                </span>
+            </button>
         </div>
         <div class="content series-data" series-data>
             <div class="series-data-point">
