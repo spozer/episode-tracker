@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles/popup.css">
+    <link rel="stylesheet" href="styles/edit-form.css">
+    <script src="scripts/edit-form.js" defer></script>
+    <title>Episode Tracker</title>
+</head>
+
+<body>
+    <form id="edit-form">
+        <div class="top-bar">
+            <button class="round-border-button" type="button" id="back-button"></button>
+            <button class="round-border-button long-press-button hide" type="button" id="delete-button"></button>
+            <button class="round-border-button" type="submit" id="apply-button"></button>
+        </div>
+        <div class="content series-data" series-data>
+            <div class="series-data-point">
+                <label>Title</label>
+                <input type="text" id="title-input" name="title" required="true">
+            </div>
+            <div class="series-data-point">
+                <label>Season</label>
+                <div class="counter">
+                    <button type="button" class="dec-button" id="season-dec-button"></button>
+                    <input type="number" id="season-input" name="season">
+                    <button type="button" class="inc-button" id="season-inc-button"></button>
+                </div>
+            </div>
+            <div class="series-data-point">
+                <label>Episode</label>
+                <div class="counter">
+                    <button type="button" class="dec-button" id="episode-dec-button"></button>
+                    <input type="number" id="episode-input" name="episode">
+                    <button type="button" class="inc-button" id="episode-inc-button"></button>
+                </div>
+            </div>
+            <div class="series-data-point">
+                <label>Completed</label>
+                <div class="completed-check">
+                    <input type="radio" id="completed-yes" name="completed" value="true">
+                    <label for="completed-yes">Yes</label>
+                    <input type="radio" id="completed-no" name="completed" value="false">
+                    <label for="completed-no">No</label>
+                </div>
+            </div>
+            <div class="series-data-point">
+                <label>Link</label>
+                <input type="url" id="link-input" name="link">
+            </div>
+        </div>
+    </form>
+</body>
+
+</html>

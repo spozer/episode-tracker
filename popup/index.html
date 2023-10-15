@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles/popup.css">
+    <link rel="stylesheet" href="styles/overview.css">
+    <script src="scripts/overview.js" defer></script>
+    <title>Episode Tracker</title>
+</head>
+
+<body>
+    <div class="top-bar">
+        <input type="search" id="search" placeholder="Search" autofocus>
+        <button class="round-border-button" id="add-button"></button>
+    </div>
+    <div class="content series-cards" id="series-cards-container"></div>
+    <template id="series-card-template">
+        <div class="card">
+            <div class="header" id="data-header"></div>
+            <div class="body" id="data-body">
+                <label class="card-info-label" id="series-info"></label>
+                <button class="card-link-button hide" id="link-button"></button>
+            </div>
+        </div>
+    </template>
+</body>
+
+</html>
