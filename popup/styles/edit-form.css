@@ -5,12 +5,12 @@
 
 @keyframes fill-background {
   0% {
-    background: url(../icons/trash-2.svg) no-repeat center, linear-gradient(to left, rgb(150, 150, 150) 50%, rgb(200, 0, 0) 50%) right;
+    background: url(../icons/trash-2.svg) no-repeat center, linear-gradient(to left, rgb(70, 70, 70) 50%, rgb(200, 0, 0) 50%) right;
     background-size: 22px, 200% 100%;
   }
 
   100% {
-    background: url(../icons/trash-2.svg) no-repeat center, linear-gradient(to left, rgb(150, 150, 150) 50%, rgb(200, 0, 0) 50%) left;
+    background: url(../icons/trash-2.svg) no-repeat center, linear-gradient(to left, rgb(70, 70, 70) 50%, rgb(200, 0, 0) 50%) left;
     background-size: 22px, 200% 100%;
   }
 }
@@ -97,7 +97,7 @@
 .counter>button {
   width: 25px;
   padding: 0px;
-  transition: background-color 0.15s, transform 0.05s;
+  transition: background-color 0.15s, transform 0.15s;
 }
 
 .counter>button:hover {

@@ -32,11 +32,11 @@ button {
   padding: 0px 4px 0px 4px;
   border: none;
   border-radius: 5px;
-  transition: transform 0.05s, filter 0.15s;
+  transition: transform 0.15s, background-color 0.15s;
 }
 
 .top-bar-button:hover {
-  background-color: rgb(150, 150, 150);
+  background-color: rgb(70, 70, 70);
 }
 
 .top-bar-button:active {
@@ -53,6 +53,7 @@ button {
 .top-bar-button-content>img {
   vertical-align: middle;
   filter: invert(1);
+  pointer-events: none;
 }
 
 .content {

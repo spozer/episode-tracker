@@ -43,7 +43,7 @@ function init() {
         }
 
         card.onclick = () => openSeriesEditor(id)
-        
+
         return {
           id: id,
           title: series.title,
