@@ -96,12 +96,15 @@ function deleteSeries() {
 }
 
 function saveInput() {
+  const now = new Date()
+
   const series = {
     title: titleInput.value,
     season: parseInt(seasonInput.value) || 0,
     episode: parseInt(episodeInput.value) || 0,
     completed: completedInputYes.checked,
-    link: linkInput.value
+    link: linkInput.value,
+    dateModified: now.toISOString()
   }
 
   storeAndLeave((seriesList) => {

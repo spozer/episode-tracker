@@ -1,5 +1,6 @@
 html {
   scrollbar-width: none;
+  user-select: none;
 }
 
 body {
@@ -27,6 +28,8 @@ button {
 }
 
 .top-bar-button {
+  height: 24px;
+  display: inline-block;
   background-color: rgb(50, 50, 50);
   color: white;
   padding: 0px 4px 0px 4px;

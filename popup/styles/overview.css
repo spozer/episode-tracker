@@ -1,5 +1,66 @@
 .body {
-    margin-bottom: 5px;
+  margin-bottom: 5px;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  background-color: rgb(60, 60, 60);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 5px;
+  padding: 3px 3px 3px 3px;
+}
+
+.dropdown-element {
+  display: flex;
+  border-radius: 5px;
+}
+
+.dropdown-element>label {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  gap: 12px;
+  color: white;
+  font-size: 12px;
+  padding: 7px 5px 7px 5px;
+  width: 100%;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.dropdown-element>label::after {
+  vertical-align: middle;
+  width: 15px;
+  height: 15px;
+  filter: invert(.3);
+  content: "";
+  transition: filter .3s;
+}
+
+.dropdown-element:hover {
+  background-color: rgb(70, 70, 70);
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+#filter-dropdown>.dropdown-element>input[type="radio"]:checked+label::after {
+  content: url(../icons/check.svg);
+  filter: invert(1);
+}
+
+#sort-dropdown>.dropdown-element>input[type="radio"]:checked+label::after {
+  content: url(../icons/arrow-down.svg);
+  filter: invert(1);
 }
 
 #search {
