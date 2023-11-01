@@ -136,6 +136,7 @@ function setFilter(filter) {
   currentFilter = filter
   saveOptions()
   fillContainer()
+  seriesCardsContainer.scrollTo(0,0)
 }
 
 function setSort(sort) {
@@ -145,6 +146,7 @@ function setSort(sort) {
   currentSort = sort
   saveOptions()
   fillContainer()
+  seriesCardsContainer.scrollTo(0,0)
 }
 
 function getFilterFunction() {

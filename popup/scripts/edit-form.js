@@ -11,6 +11,7 @@ const episodeIncButton = document.getElementById("episode-inc-button")
 const titleInput = document.getElementById("title-input")
 const seasonInput = document.getElementById("season-input")
 const episodeInput = document.getElementById("episode-input")
+const completedSwitch = document.getElementById("completed-switch")
 const completedInputYes = document.getElementById("completed-yes")
 const completedInputNo = document.getElementById("completed-no")
 const linkInput = document.getElementById("link-input")
@@ -41,6 +42,16 @@ function init() {
   seasonInput.onwheel = () => { return false }
   episodeInput.onwheel = () => { return false }
 
+  completedInputYes.onclick = () => {
+    completedSwitch.classList.remove("switch-right")
+    completedSwitch.classList.add("switch-left")
+  }
+
+  completedInputNo.onclick = () => {
+    completedSwitch.classList.remove("switch-left")
+    completedSwitch.classList.add("switch-right")
+  }
+
   if (isNotEmptyInitialized()) {
     const seriesId = urlParams.get("seriesId")
 
@@ -56,6 +67,8 @@ function init() {
         titleInput.value = series.title
         seasonInput.value = series.season
         episodeInput.value = series.episode
+        completedSwitch.classList.toggle("switch-left", series.completed)
+        completedSwitch.classList.toggle("switch-right", !series.completed)
         completedInputYes.checked = series.completed
         completedInputNo.checked = !series.completed
         linkInput.value = series.link

@@ -28,7 +28,6 @@
   border: 2px solid white;
   border-radius: 5px;
   padding: 10px 5px 10px 5px;
-  /* color: white; */
   background-color: white;
 }
 
@@ -49,34 +48,50 @@
   text-align: center;
 }
 
-.completed-check {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  padding-left: 20px;
-  padding-right: 20px;
+.switch {
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  height: 25px;
+  width: 90px;
+  border: 1px solid rgb(130, 130, 130);
+  border-radius: 2px;
+  transition: background-position 0.3s;
 }
 
 /* Disable default radio icons */
-.completed-check>input[type="radio"] {
+.switch>input[type="radio"] {
   display: none;
 }
 
-.completed-check>label {
+.switch>label {
   cursor: pointer;
-  line-height: 2rem;
+  width: 100%;
+  line-height: 25px;
+  align-self: center;
   text-align: center;
   transition: color 0.15s, font-size 0.15s;
+  color: white;
 }
 
-.completed-check>input[type="radio"]:checked+label {
-  /* color: white; */
-  font-size: 20px;
+.switch>input[type="radio"]:checked+label {
+  font-size: 16px;
   font-weight: medium;
 }
 
-.completed-check>input[type="radio"]:not(:checked)+label {
-  color: grey;
-  font-size: 15px;
+.switch>input[type="radio"]:not(:checked)+label {
+  color: lightgray;
+  font-size: 13px;
+}
+
+.switch-right {
+  background: linear-gradient(to right, rgba(100, 100, 100, 0) 33%, rgb(70, 70, 70) 33% 67%, rgba(100, 100, 100, 0) 67%) left;
+  background-size: 150% 100%;
+}
+
+.switch-left {
+  background: linear-gradient(to right, rgba(100, 100, 100, 0) 32%, rgb(70, 70, 70) 32% 66%, rgba(100, 100, 100, 0) 66%) right;
+  background-size: 150% 100%;
 }
 
 .counter {
@@ -101,7 +116,6 @@
 }
 
 .counter>button:hover {
-  /* background-color: darkgrey; */
   background-color: lightgray;
 }
 
@@ -110,17 +124,15 @@
 }
 
 .dec-button {
-  border: 1px solid rgb(150, 150, 150);
+  border: 1px solid rgb(130, 130, 130);
   border-radius: 2px;
   background: url(../icons/minus.svg);
-  /* filter: invert(1); */
 }
 
 .inc-button {
-  border: 1px solid rgb(150, 150, 150);
+  border: 1px solid rgb(130, 130, 130);
   border-radius: 2px;
   background: url(../icons/plus.svg);
-  /* filter: invert(1); */
 }
 
 .hide {
