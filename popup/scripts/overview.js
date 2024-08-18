@@ -15,6 +15,7 @@ const sortDateModified = document.getElementById("sort-date-modified")
 let seriesCards = []
 let currentFilter = "all"
 let currentSort = "title"
+let sortReversed = false;
 
 function init() {
   searchInput.oninput = onSearch
@@ -39,8 +40,8 @@ function init() {
   filterAll.onclick = (element) => setFilter(element.target.value)
   filterCompleted.onclick = (element) => setFilter(element.target.value)
   filterWatching.onclick = (element) => setFilter(element.target.value)
-  sortTitle.onclick = (element) => setSort(element.target.value)
-  sortDateModified.onclick = (element) => setSort(element.target.value)
+  sortTitle.onclick = (element) => setSort(element.target.value, sortTitle)
+  sortDateModified.onclick = (element) => setSort(element.target.value, sortDateModified)
 
   browser.storage.local.get("options")
     .then(data => {
@@ -49,6 +50,7 @@ function init() {
 
       currentFilter = options.filter
       currentSort = options.sort
+      sortReversed = options.sortReversed
 
       switch (currentFilter) {
         case "all":
@@ -67,9 +69,11 @@ function init() {
         case "title":
         default:
           sortTitle.checked = true
+          sortTitle.toggleAttribute('reversed', sortReversed)
           break
         case "date-modified":
           sortDateModified.checked = true
+          sortDateModified.toggleAttribute('reversed', sortReversed)
           break
       }
     })
@@ -123,7 +127,8 @@ function init() {
 function saveOptions() {
   const options = {
     filter: currentFilter,
-    sort: currentSort
+    sort: currentSort,
+    sortReversed: sortReversed
   }
 
   browser.storage.local.set({ "options": options })
@@ -139,11 +144,14 @@ function setFilter(filter) {
   seriesCardsContainer.scrollTo(0,0)
 }
 
-function setSort(sort) {
+function setSort(sort, element) {
   if (currentSort === sort) {
-    return
+    sortReversed = !sortReversed
+  } else {
+    currentSort = sort
+    sortReversed = false;
   }
-  currentSort = sort
+  element.toggleAttribute('reversed', sortReversed)
   saveOptions()
   fillContainer()
   seriesCardsContainer.scrollTo(0,0)
@@ -165,21 +173,20 @@ function getSortFunction() {
   switch (currentSort) {
     case "title":
     default:
-      return (seriesA, seriesB) => seriesA.title.toLowerCase() > seriesB.title.toLowerCase()
+      return (seriesA, seriesB) => sortReversed ? seriesA.title.toLowerCase() <= seriesB.title.toLowerCase() : seriesA.title.toLowerCase() > seriesB.title.toLowerCase()
     case "date-modified":
       return (seriesA, seriesB) => {
         const dateA = new Date(seriesA.dateModified)
         const dateB = new Date(seriesB.dateModified)
-        return dateA < dateB
+        return sortReversed ? dateA >= dateB : dateA < dateB
       }
   }
 }
 
 function fillContainer() {
-  if (seriesCardsContainer.childElementCount > 0) {
-    while (seriesCardsContainer.firstChild) {
-      seriesCardsContainer.removeChild(seriesCardsContainer.firstChild)
-    }
+  // etmpty container
+  while (seriesCardsContainer.firstChild) {
+    seriesCardsContainer.removeChild(seriesCardsContainer.firstChild)
   }
 
   const sortFunction = getSortFunction()

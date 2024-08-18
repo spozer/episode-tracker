@@ -15,6 +15,11 @@
   }
 }
 
+input:focus, .counter>button:hover {
+  outline: none;
+  border: 2px solid var(--accent-color);
+}
+
 .series-data {
   display: grid;
   grid-template-columns: 1fr;
@@ -71,7 +76,7 @@
   align-self: center;
   text-align: center;
   transition: color 0.15s, font-size 0.15s;
-  color: white;
+  /* color: white; */
 }
 
 .switch>input[type="radio"]:checked+label {
@@ -85,12 +90,12 @@
 }
 
 .switch-right {
-  background: linear-gradient(to right, rgba(100, 100, 100, 0) 33%, rgb(70, 70, 70) 33% 67%, rgba(100, 100, 100, 0) 67%) left;
+  background: linear-gradient(to right, rgba(100, 100, 100, 0) 33%, var(--accent-color) 33% 67%, rgba(100, 100, 100, 0) 67%) left;
   background-size: 150% 100%;
 }
 
 .switch-left {
-  background: linear-gradient(to right, rgba(100, 100, 100, 0) 32%, rgb(70, 70, 70) 32% 66%, rgba(100, 100, 100, 0) 66%) right;
+  background: linear-gradient(to right, rgba(100, 100, 100, 0) 32%, var(--accent-color) 32% 66%, rgba(100, 100, 100, 0) 66%) right;
   background-size: 150% 100%;
 }
 
@@ -115,10 +120,6 @@
   transition: background-color 0.15s, transform 0.15s;
 }
 
-.counter>button:hover {
-  background-color: lightgray;
-}
-
 .counter>button:active {
   transform: scale(0.95, 0.95);
 }
@@ -137,4 +138,8 @@
 
 .hide {
   display: none;
+}
+
+.no-transition, .no-transition>label {
+  transition: none;
 }

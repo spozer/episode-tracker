@@ -58,8 +58,13 @@ input[type="radio"] {
   filter: invert(1);
 }
 
-#sort-dropdown>.dropdown-element>input[type="radio"]:checked+label::after {
+#sort-dropdown>.dropdown-element:not([reversed])>input[type="radio"]:checked+label::after {
   content: url(../icons/arrow-down.svg);
+  filter: invert(1);
+}
+
+#sort-dropdown>.dropdown-element:has([reversed])>input[type="radio"]:checked+label::after {
+  content: url(../icons/arrow-up.svg);
   filter: invert(1);
 }
 
@@ -76,12 +81,17 @@ input[type="radio"] {
   width: 100%;
 }
 
+#search:focus, .card:hover {
+  outline: none;
+  border-color: var(--accent-color);
+}
+
 .series-cards {
   display: flex;
   flex-direction: column;
   gap: .25rem;
-  margin-top: .5rem;
-  padding-right: .5rem;
+  margin-top: .4rem;
+  padding: .1rem .5rem .1rem 0;
   overflow-y: scroll;
   scrollbar-color: rgb(150, 150, 150) rgb(100, 100, 100);
   scrollbar-width: thin;
@@ -101,8 +111,6 @@ input[type="radio"] {
 
 .card:hover {
   transform: scale(0.98, 0.98);
-  background-color: rgb(240, 240, 240);
-  border-color: grey;
 }
 
 .card:active {
@@ -110,7 +118,8 @@ input[type="radio"] {
 }
 
 .card>.header {
-  margin-bottom: .25rem;
+  line-height: 1.25rem;
+  margin-bottom: .3rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -144,6 +153,5 @@ input[type="radio"] {
 }
 
 .completed {
-  opacity: 0.5;
-  border-width: 1px;
+  background-color: rgba(255, 255, 255, .5);
 }

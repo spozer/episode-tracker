@@ -64,6 +64,9 @@ function init() {
 
         const series = seriesList[seriesId]
 
+        // disable switch transitions before setting its state
+        completedSwitch.classList.add("no-transition")
+
         titleInput.value = series.title
         seasonInput.value = series.season
         episodeInput.value = series.episode
@@ -72,7 +75,14 @@ function init() {
         completedInputYes.checked = series.completed
         completedInputNo.checked = !series.completed
         linkInput.value = series.link
+
+        // enable switch transitions, but wait for its initialization
+        setTimeout(() => completedSwitch.classList.remove("no-transition"), 50)
       })
+  } else {
+    // default for new series: not completed
+    completedSwitch.classList.add("switch-right")
+    completedInputNo.checked = true
   }
 }
 
