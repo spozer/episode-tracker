@@ -18,6 +18,10 @@ let currentSort = "title"
 let sortReversed = false;
 
 function init() {
+  window.addEventListener("unload", () => {
+    localStorage.setItem('scrollpos', seriesCardsContainer.scrollTop)
+  });
+
   searchInput.oninput = onSearch
   addButton.onclick = switchToEditForm
 
@@ -122,6 +126,13 @@ function init() {
         })
       }))
     .then(fillContainer)
+    .then(() => {
+      const scrollpos = localStorage.getItem('scrollpos')
+      if (scrollpos) {
+        seriesCardsContainer.scrollTo(0, scrollpos)
+        localStorage.removeItem('scrollpos')
+      }
+    })
 }
 
 function saveOptions() {

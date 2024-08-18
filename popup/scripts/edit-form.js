@@ -115,6 +115,8 @@ function deleteSeries() {
   storeAndLeave((seriesList) => {
     const seriesId = urlParams.get("seriesId")
     seriesList.splice(seriesId, 1)
+    // reset scroll postion of series list
+    localStorage.removeItem('scrollpos')
   })
 }
 
@@ -132,10 +134,14 @@ function saveInput() {
 
   storeAndLeave((seriesList) => {
     if (isNotEmptyInitialized()) {
+      // edit already existing series
       const seriesId = urlParams.get("seriesId")
       seriesList[seriesId] = series
     } else {
+      // add new series
       seriesList.push(series)
+      // reset scroll postion of series list
+      localStorage.removeItem('scrollpos')
     }
   })
 
