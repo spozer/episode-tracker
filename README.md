@@ -2,7 +2,7 @@
 A Firefox Extension to track your favourite TV shows
 
 <p align="middle">
-<img src="screenshots/overview.png" width=40%>
+<img src="screenshots/overview.png" width=20%>
 &nbsp;
-<img src="screenshots/edit-form.png" width=40%>
+<img src="screenshots/edit-form.png" width=21%>
 </p>
