@@ -96,7 +96,8 @@ input[type="radio"] {
   scrollbar-color: rgb(150, 150, 150) rgb(100, 100, 100);
   scrollbar-width: thin;
   scrollbar-gutter: stable;
-  height: 350px;
+  height: 300px;
+  padding-bottom: 50px;
 }
 
 .card {

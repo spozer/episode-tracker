@@ -1,0 +1,86 @@
+
+body {
+    width: 100%;
+    background-color: rgb(40, 40, 40);
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.settings-category {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 30%;
+    border: 2px solid grey;
+    border-radius: 5px;
+}
+
+button {
+    height: 40px;
+    padding: 0;
+    width: 50%;
+    background-color: white;
+    border-radius: 5px;
+    border: 2px solid black;
+    position: relative;
+}
+
+button img {
+    vertical-align: middle;
+    pointer-events: none;
+    position: absolute;
+    left: 15px;
+}
+
+button:hover {
+    border-color: var(--accent-color);
+    cursor: pointer;
+}
+
+.backup-element {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.io-success, .io-error, .io-loading {
+    display: inline-block;
+    position: absolute;
+    right: 15%;
+}
+
+.io-success, .io-error {
+    width: 20px;
+    height: 20px;
+}
+
+.io-success {
+    background: url(../icons/check_green.svg) no-repeat;
+}
+
+.io-error {
+    background: url(../icons/x_red.svg) no-repeat;
+}
+
+.io-loading {
+    width: 15px;
+    height: 15px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid var(--accent-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

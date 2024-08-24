@@ -2,6 +2,7 @@ const seriesCardTemplate = document.getElementById("series-card-template")
 const seriesCardsContainer = document.getElementById("series-cards-container")
 const searchInput = document.getElementById("search")
 const addButton = document.getElementById("add-button")
+const settingsButton = document.getElementById("settings-button")
 const filterButton = document.getElementById("filter-button")
 const sortButton = document.getElementById("sort-button")
 const filterDropdown = document.getElementById("filter-dropdown")
@@ -24,6 +25,7 @@ function init() {
 
   searchInput.oninput = onSearch
   addButton.onclick = switchToEditForm
+  settingsButton.onclick = switchToSettings
 
   filterButton.onclick = () => filterDropdown.classList.toggle("hide")
   sortButton.onclick = () => sortDropdown.classList.toggle("hide")
@@ -54,7 +56,7 @@ function init() {
 
       currentFilter = options.filter
       currentSort = options.sort
-      sortReversed = options.sortReversed
+      sortReversed = !!options.sortReversed
 
       switch (currentFilter) {
         case "all":
@@ -227,6 +229,13 @@ function openSeriesEditor(seriesId) {
 
 function switchToEditForm() {
   window.location.href = "./edit-form.html"
+}
+
+function switchToSettings() {
+  browser.tabs.create({
+    url: "./settings.html",
+  })
+  window.close()
 }
 
 init()
