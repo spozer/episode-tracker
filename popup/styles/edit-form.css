@@ -137,9 +137,9 @@ input:focus, .counter>button:hover {
 }
 
 .hide {
-  display: none;
+  display: none !important;
 }
 
 .no-transition, .no-transition>label {
-  transition: none;
+  transition: none !important;
 }

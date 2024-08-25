@@ -6,20 +6,15 @@ body {
     color: white;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
 .settings-category {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 15px;
-    width: 30%;
+    max-width: 400px;
     border: 2px solid grey;
     border-radius: 5px;
+    margin-bottom: 15px;
 }
 
 button {
@@ -64,11 +59,11 @@ button:hover {
 }
 
 .io-success {
-    background: url(../icons/check_green.svg) no-repeat;
+    background: url(../icons/check-green.svg) no-repeat;
 }
 
 .io-error {
-    background: url(../icons/x_red.svg) no-repeat;
+    background: url(../icons/x-red.svg) no-repeat;
 }
 
 .io-loading {

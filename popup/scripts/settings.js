@@ -19,7 +19,7 @@ function exportSeries() {
   setIoCheckerStatus(exportIoChecker, "loading")
   browser.storage.local.get("series").then(
     data => {
-      const blob = new Blob([JSON.stringify(data)])
+      const blob = new Blob([JSON.stringify(data, null, 4)])
       const link = document.createElement("a")
       link.href = window.URL.createObjectURL(blob)
       link.download = `episode-tracker_${new Date().toLocaleDateString()}.json`

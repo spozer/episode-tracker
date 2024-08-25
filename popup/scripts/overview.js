@@ -91,9 +91,8 @@ function init() {
         seriesCards = seriesList.map((series, id) => {
           const card = seriesCardTemplate.content.cloneNode(true).children[0]
           const header = card.querySelector("#data-header")
-          const body = card.querySelector("#data-body")
-          const seriesInfo = body.querySelector("#series-info")
-          const linkButton = body.querySelector("#link-button")
+          const seriesInfo = card.querySelector("#series-info")
+          const linkButton = card.querySelector("#link-button")
 
           header.textContent = series.title
 
@@ -111,7 +110,9 @@ function init() {
             linkButton.classList.toggle("hide", false)
             linkButton.onclick = (e) => {
               e.stopPropagation()
-              window.open(series.link, '_blank')
+              browser.tabs.create({
+                url: series.link,
+              })
               window.close()
             }
           }

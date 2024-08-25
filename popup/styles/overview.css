@@ -101,24 +101,51 @@ input[type="radio"] {
 }
 
 .card {
-  height: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
   border: 2px solid black;
   border-radius: 5px;
-  cursor: pointer;
   background-color: white;
-  padding: .5rem;
+  cursor: pointer;
   transition: transform 0.05s, background-color 0.15s, border-color 0.15s;
 }
 
 .card:hover {
-  transform: scale(0.98, 0.98);
+  transform: scale(0.985, 0.985);
 }
 
 .card:active {
   transform: scale(0.96, 0.96);
 }
 
-.card>.header {
+.card .content {
+  overflow: hidden;
+  padding: 10px 5px 5px 10px;
+  margin: 0;
+}
+
+.card .link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 0 0 auto;
+  width: 12%;
+  height: 100%;
+  padding: 0 0 0 2px;
+  margin: 0;
+  transition: background-position 0.15s;
+  background: linear-gradient(to right, rgba(100, 100, 100, 0) 50%, var(--accent-color) 50%) left;
+  background-size: 205% 100%;
+}
+
+.card .link:hover {
+  background-position: right;
+}
+
+.card .header {
   line-height: 1.25rem;
   margin-bottom: .3rem;
   white-space: nowrap;
@@ -126,33 +153,21 @@ input[type="radio"] {
   text-overflow: ellipsis;
 }
 
-.card>.body {
+.card .body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-.card>.body>.card-info-label {
+.card .card-info-label {
   font-size: .8rem;
   color: #777;
 }
 
-.card>.body>.card-link-button {
-  height: 20px;
-  width: 20px;
-  background: url(../icons/external-link.svg) no-repeat;
-  border: 0px;
-  transition: filter 0.15s;
-}
-
-.card>.body>.card-link-button:hover {
-  filter: contrast(0%);
-}
-
 .hide {
-  display: none;
+  display: none !important;
 }
 
 .completed {
-  background-color: rgba(255, 255, 255, .5);
+  background-color: rgba(255, 255, 255, .65);
 }
