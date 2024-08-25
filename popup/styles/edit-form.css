@@ -23,8 +23,8 @@ input:focus, .counter>button:hover {
 .series-data {
   display: grid;
   grid-template-columns: 1fr;
-  row-gap: .5rem;
-  margin-top: .5rem;
+  row-gap: 5px;
+  margin-top: 5px;
 }
 
 .series-data-point {
@@ -76,10 +76,10 @@ input:focus, .counter>button:hover {
   align-self: center;
   text-align: center;
   transition: color 0.15s, font-size 0.15s;
-  /* color: white; */
 }
 
 .switch>input[type="radio"]:checked+label {
+  color: white;
   font-size: 16px;
   font-weight: medium;
 }

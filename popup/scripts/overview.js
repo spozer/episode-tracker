@@ -103,7 +103,7 @@ function init() {
           seriesInfo.textContent += "Episode: " + series.episode
 
           if (series.completed) {
-            card.classList.add("completed")
+            card.toggleAttribute('completed', true)
           }
 
           if (series.link) {

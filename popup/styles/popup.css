@@ -58,7 +58,20 @@ button {
 
 .content {
   margin: 10px 7px 5px 7px;
+  animation: fadeInAnimation 0.2s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 
 .floating-action-button {
   width: 37px;

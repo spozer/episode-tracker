@@ -23,7 +23,7 @@
   border-radius: 5px;
 }
 
-.dropdown-element>label {
+.dropdown-element label {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
@@ -36,7 +36,7 @@
   cursor: pointer;
 }
 
-.dropdown-element>label::after {
+.dropdown-element label::after {
   vertical-align: middle;
   width: 15px;
   height: 15px;
@@ -53,17 +53,17 @@ input[type="radio"] {
   display: none;
 }
 
-#filter-dropdown>.dropdown-element>input[type="radio"]:checked+label::after {
+#filter-dropdown .dropdown-element input[type="radio"]:checked + label::after {
   content: url(../icons/check.svg);
   filter: invert(1);
 }
 
-#sort-dropdown>.dropdown-element:not([reversed])>input[type="radio"]:checked+label::after {
+#sort-dropdown .dropdown-element:not([reversed]) input[type="radio"]:checked + label::after {
   content: url(../icons/arrow-down.svg);
   filter: invert(1);
 }
 
-#sort-dropdown>.dropdown-element:has([reversed])>input[type="radio"]:checked+label::after {
+#sort-dropdown .dropdown-element:has([reversed]) input[type="radio"]:checked + label::after {
   content: url(../icons/arrow-up.svg);
   filter: invert(1);
 }
@@ -77,11 +77,11 @@ input[type="radio"] {
   padding-left: 30px;
   padding-top: 5px;
   padding-bottom: 5px;
-  font-size: 1rem;
+  font-size: 12pt;
   width: 100%;
 }
 
-#search:focus, .card:hover {
+#search:focus {
   outline: none;
   border-color: var(--accent-color);
 }
@@ -89,15 +89,14 @@ input[type="radio"] {
 .series-cards {
   display: flex;
   flex-direction: column;
-  gap: .25rem;
-  margin-top: .4rem;
-  padding: .1rem .5rem .1rem 0;
+  gap: 5px;
+  height: 300px;
+  margin-top: 5px;
+  padding: 0 5px 50px 0;
   overflow-y: scroll;
   scrollbar-color: rgb(150, 150, 150) rgb(100, 100, 100);
   scrollbar-width: thin;
   scrollbar-gutter: stable;
-  height: 300px;
-  padding-bottom: 50px;
 }
 
 .card {
@@ -108,13 +107,33 @@ input[type="radio"] {
   box-sizing: border-box;
   border: 2px solid black;
   border-radius: 5px;
-  background-color: white;
+  background-color: var(--accent-color);
+  position: relative;
   cursor: pointer;
-  transition: transform 0.05s, background-color 0.15s, border-color 0.15s;
+  transition: transform 0.05s, border-color 0.15s, background-size 0.3s;
+}
+
+.card::after {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  bottom: -2px;
+  left: -2px;
+  border: 2px solid transparent;
+  background-color: white;
+  background-clip: content-box;
+  border-radius: 5px;
+  content: '';
+  transition: right 0.3s;
+}
+
+.card[completed]::after {
+  background-color: rgba(255, 255, 255, .65);
 }
 
 .card:hover {
   transform: scale(0.985, 0.985);
+  border-color: var(--accent-color);
 }
 
 .card:active {
@@ -125,6 +144,7 @@ input[type="radio"] {
   overflow: hidden;
   padding: 10px 5px 5px 10px;
   margin: 0;
+  z-index: 1;
 }
 
 .card .link {
@@ -136,18 +156,21 @@ input[type="radio"] {
   height: 100%;
   padding: 0 0 0 2px;
   margin: 0;
-  transition: background-position 0.15s;
-  background: linear-gradient(to right, rgba(100, 100, 100, 0) 50%, var(--accent-color) 50%) left;
-  background-size: 205% 100%;
+  box-sizing: border-box;
+  z-index: 1;
 }
 
-.card .link:hover {
-  background-position: right;
+.card .link:hover img {
+  filter: invert(100%);
+}
+
+.card:has(.link:hover)::after {
+  right: 12%;
 }
 
 .card .header {
-  line-height: 1.25rem;
-  margin-bottom: .3rem;
+  font-size: 12pt;
+  margin-bottom: 5px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -160,14 +183,10 @@ input[type="radio"] {
 }
 
 .card .card-info-label {
-  font-size: .8rem;
+  font-size: 10pt;
   color: #777;
 }
 
 .hide {
   display: none !important;
-}
-
-.completed {
-  background-color: rgba(255, 255, 255, .65);
 }
