@@ -17,13 +17,18 @@ let seriesCards = []
 let currentFilter = "all"
 let currentSort = "title"
 let sortReversed = false;
+let scrollBefore = null;
 
 function init() {
   window.addEventListener("unload", () => {
     localStorage.setItem('scrollpos', seriesCardsContainer.scrollTop)
+    localStorage.setItem('searchText', searchInput.value)
   });
 
-  searchInput.oninput = onSearch
+  searchInput.oninput = (element) => {
+    seriesCardsContainer.scrollTo(0, 0)
+    search(element.target.value)
+  }
   addButton.onclick = switchToEditForm
   settingsButton.onclick = switchToSettings
 
@@ -31,6 +36,30 @@ function init() {
   sortButton.onclick = () => sortDropdown.classList.toggle("hide")
   filterDropdown.onmouseleave = () => filterDropdown.classList.toggle("hide", true)
   sortDropdown.onmouseleave = () => sortDropdown.classList.toggle("hide", true)
+
+  seriesCardsContainer.onscroll = () => {
+    const scrolled = seriesCardsContainer.scrollTop;
+
+    if (scrollBefore === null) {
+      scrollBefore = scrolled
+
+      if (scrolled > 0 &&
+          Math.abs(seriesCardsContainer.scrollHeight - seriesCardsContainer.clientHeight - seriesCardsContainer.scrollTop) <= 1) {
+        addButton.classList.toggle('hide-floating-button', true)
+      }
+      return
+    }
+
+    if (scrollBefore > scrolled) {
+      // scrolled up
+      scrollBefore = scrolled;
+      addButton.classList.toggle('hide-floating-button', false)
+    } else if (scrollBefore < scrolled) {
+      // scrolled down
+      scrollBefore = scrolled;
+      addButton.classList.toggle('hide-floating-button', true)
+    }
+  }
 
   document.onclick = (element) => {
     // hide dropdown when clicking outside
@@ -131,6 +160,14 @@ function init() {
     .then(fillContainer)
     .then(() => {
       const scrollpos = localStorage.getItem('scrollpos')
+      const searchText = localStorage.getItem('searchText')
+
+      if (searchText) {
+        searchInput.value = searchText
+        localStorage.removeItem('searchText')
+        search(searchText)
+      }
+
       if (scrollpos) {
         seriesCardsContainer.scrollTo(0, scrollpos)
         localStorage.removeItem('scrollpos')
@@ -215,8 +252,8 @@ function fillContainer() {
   })
 }
 
-function onSearch(input) {
-  const value = input.target.value.toLowerCase()
+function search(searchText) {
+  const value = searchText.toLowerCase()
 
   seriesCards.forEach(seriesCard => {
     const isVisiable = seriesCard.title.toLowerCase().includes(value)

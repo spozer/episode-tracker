@@ -11,6 +11,7 @@ body {
   margin: 0;
   background-color: rgb(40, 40, 40);
   font-family: Arial, Helvetica, sans-serif;
+  overflow: hidden;
 }
 
 button {
@@ -50,14 +51,14 @@ button {
   padding: 1px 3px 1px 3px;
 }
 
-.top-bar-button-content>img {
+.top-bar-button-content img {
   vertical-align: middle;
   filter: invert(1);
   pointer-events: none;
 }
 
 .content {
-  margin: 10px 7px 5px 7px;
+  margin: 5px;
   animation: fadeInAnimation 0.2s;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
@@ -72,23 +73,27 @@ button {
   }
 }
 
-
 .floating-action-button {
-  width: 37px;
-  height: 37px;
+  width: 40px;
+  height: 40px;
   border: none;
   border-radius: 100%;
-  position: fixed;
-  bottom: 10px;
+  position: absolute;
+  bottom: 15px;
   left: 10px;
-  box-shadow: 0px 2px 4px rgb(0, 0, 0, 0.4);
+  box-shadow: 0px 2px 5px rgb(0, 0, 0, 0.5);
   background-color: var(--accent-color);
+  transition: bottom 0.3s;
 }
 
-.floating-action-button>img {
+.floating-action-button img {
   vertical-align: middle;
   filter: invert(1);
   pointer-events: none;
+}
+
+.hide-floating-button {
+  bottom: -45px;
 }
 
 .floating-action-button:hover {
