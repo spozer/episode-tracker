@@ -83,13 +83,12 @@ function init() {
       const options = {}
       Object.assign(options, data.options)
 
-      currentFilter = options.filter
-      currentSort = options.sort
+      currentFilter = options.filter || "all"
+      currentSort = options.sort || "title"
       sortReversed = !!options.sortReversed
 
       switch (currentFilter) {
         case "all":
-        default:
           filterAll.checked = true
           break
         case "completed":
@@ -102,7 +101,6 @@ function init() {
 
       switch (currentSort) {
         case "title":
-        default:
           sortTitle.checked = true
           sortTitle.toggleAttribute('reversed', sortReversed)
           break
@@ -140,7 +138,7 @@ function init() {
             linkButton.onclick = (e) => {
               e.stopPropagation()
               browser.tabs.create({
-                url: series.link,
+                url: series.link.replace("%s", series.season).replace("%e", series.episode),
               })
               window.close()
             }
