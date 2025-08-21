@@ -1,7 +1,3 @@
-.body {
-  margin-bottom: 5px;
-}
-
 .dropdown {
   position: relative;
   display: inline-block;
@@ -53,17 +49,17 @@ input[type="radio"] {
   display: none;
 }
 
-#filter-dropdown .dropdown-element input[type="radio"]:checked + label::after {
+#filter-dropdown .dropdown-element input[type="radio"]:checked+label::after {
   content: url(../icons/check.svg);
   filter: invert(1);
 }
 
-#sort-dropdown .dropdown-element:not([reversed]) input[type="radio"]:checked + label::after {
+#sort-dropdown .dropdown-element:not([reversed]) input[type="radio"]:checked+label::after {
   content: url(../icons/arrow-down.svg);
   filter: invert(1);
 }
 
-#sort-dropdown .dropdown-element:has([reversed]) input[type="radio"]:checked + label::after {
+#sort-dropdown .dropdown-element:has([reversed]) input[type="radio"]:checked+label::after {
   content: url(../icons/arrow-up.svg);
   filter: invert(1);
 }
@@ -94,8 +90,6 @@ input[type="radio"] {
   margin-top: 5px;
   padding-right: 5px;
   overflow-y: scroll;
-  scrollbar-color: rgb(150, 150, 150) rgb(100, 100, 100);
-  scrollbar-width: thin;
   scrollbar-gutter: stable;
 }
 

@@ -1,4 +1,3 @@
-
 body {
     width: 100%;
     background-color: rgb(40, 40, 40);
@@ -18,6 +17,7 @@ body {
     border: 2px solid grey;
     border-radius: 5px;
     margin-bottom: 15px;
+    transition: all 5s linear;
 }
 
 button {
@@ -50,13 +50,16 @@ button:hover {
     justify-content: center;
 }
 
-.io-success, .io-error, .io-loading {
+.io-success,
+.io-error,
+.io-loading {
     display: inline-block;
     position: absolute;
     right: 15%;
 }
 
-.io-success, .io-error {
+.io-success,
+.io-error {
     width: 20px;
     height: 20px;
 }
@@ -79,6 +82,143 @@ button:hover {
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.toggle-element {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 42px;
+    height: 22px;
+}
+
+.switch input {
+    display: none;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    border-radius: 20px;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 3px;
+    background-color: white;
+    border-radius: 50%;
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-color: var(--accent-color);
+}
+
+input:checked+.slider:before {
+    transform: translateX(19px);
+}
+
+.storage-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    gap: 2px;
+    font-size: 8pt;
+}
+
+.storage-indicator progress {
+    appearance: none;
+    background-color: white;
+    height: 7px;
+    width: 100%;
+    border: none;
+}
+
+.storage-indicator progress[value]::-moz-progress-bar {
+    appearance: none;
+    background-color: var(--accent-color);
+}
+
+.popup-overlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.popup {
+    width: 50%;
+    background-color: rgb(100, 100, 100);
+    border-radius: 10px;
+    border: 1px solid white;
+    overflow: hidden;
+}
+
+.popup-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* height: 30px; */
+    background-color: orange;
+    color: black;
+    font-size: large;
+    padding: 10px 0 10px 0;
+}
+
+.popup-content {
+    padding: 5px;
+    max-height: 80%;
+    overflow-y: scroll;
+}
+
+.popup-buttons {
+    display: flex;
+    justify-content: right;
+    gap: 10px;
+    padding: 10px;
+}
+
+.popup-buttons>button {
+    width: 70px;
+    height: 40px;
+}
+
+#series-merge-popup>table {
+    width: 100%;
+    padding: 10px;
+}
+
+.hide {
+    display: none !important;
 }

@@ -1,13 +1,19 @@
 {
     "manifest_version": 2,
     "name": "Episode Tracker",
-    "version": "1.4.0",
+    "version": "1.5.0",
     "permissions": [
         "storage"
     ],
+    "options_page": "popup/settings/index.html",
     "browser_action": {
         "default_icon": "icon.png",
         "default_popup": "popup/index.html",
         "default_title": "Episode Tracker"
+    },
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "{80cdaf36-1a25-43a2-b764-987f757c6e29}"
+        }
     }
 }

@@ -1,0 +1,58 @@
+<form id="edit-form" autocomplete="off">
+    <div class="top-bar">
+        <button class="top-bar-button" type="button" id="back-button">
+            <span class="top-bar-button-content">
+                <img src="icons/arrow-left.svg" alt="arrow-left.svg" height="14" width="14" />
+                Back
+            </span>
+        </button>
+        <button class="top-bar-button long-press-button hide" type="button" id="delete-button">
+            <span class="top-bar-button-content">
+                <img src="icons/trash.svg" alt="trash.svg" height="14" width="14" />
+                Delete
+            </span>
+        </button>
+        <button class="top-bar-button" type="submit" id="apply-button">
+            <span class="top-bar-button-content">
+                <img src="icons/check.svg" alt="check.svg" height="14" width="14" />
+                Apply
+            </span>
+        </button>
+    </div>
+    <div class="content series-data" series-data>
+        <div class="series-data-point">
+            <label>Title</label>
+            <input type="text" id="title-input" name="title" required="true">
+        </div>
+        <div class="series-data-point">
+            <label>Season</label>
+            <div class="counter">
+                <button type="button" class="dec-button" id="season-dec-button"></button>
+                <input type="number" id="season-input" name="season">
+                <button type="button" class="inc-button" id="season-inc-button"></button>
+            </div>
+        </div>
+        <div class="series-data-point">
+            <label>Episode</label>
+            <div class="counter">
+                <button type="button" class="dec-button" id="episode-dec-button"></button>
+                <input type="number" id="episode-input" name="episode">
+                <button type="button" class="inc-button" id="episode-inc-button"></button>
+            </div>
+        </div>
+        <div class="series-data-point">
+            <label>Completed</label>
+            <div class="switch" id="completed-switch">
+                <input type="radio" id="completed-yes" name="completed" value="true">
+                <label for="completed-yes">Yes</label>
+                <input type="radio" id="completed-no" name="completed" value="false">
+                <label for="completed-no">No</label>
+            </div>
+        </div>
+        <div class="series-data-point">
+            <label>Link</label>
+            <input type="url" id="link-input" name="link"
+                title="Use %s and %e as placeholder for the number of season or episode">
+        </div>
+    </div>
+</form>

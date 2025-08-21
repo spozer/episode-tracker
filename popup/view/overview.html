@@ -1,0 +1,72 @@
+<div class="top-bar">
+    <div class="dropdown">
+        <button class="top-bar-button" id="filter-button">
+            <span class="top-bar-button-content">
+                <img src="icons/filter.svg" alt="filter.svg" height="12" width="12" />
+                Filter
+            </span>
+        </button>
+        <div class="dropdown-content hide" id="filter-dropdown">
+            <div class="dropdown-element">
+                <input type="radio" id="filter-all" name="filter-radio" value="all">
+                <label for="filter-all">All</label>
+            </div>
+            <div class="dropdown-element">
+                <input type="radio" id="filter-completed" name="filter-radio" value="completed">
+                <label for="filter-completed">Completed</label>
+            </div>
+            <div class="dropdown-element">
+                <input type="radio" id="filter-watching" name="filter-radio" value="watching">
+                <label for="filter-watching">Watching</label>
+            </div>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="top-bar-button" id="sort-button">
+            <span class="top-bar-button-content">
+                <img src="icons/sort.svg" alt="sort.svg" height="14" width="14" />
+                Sort
+            </span>
+        </button>
+        <div class="dropdown-content hide" id="sort-dropdown">
+            <div class="dropdown-element">
+                <input type="radio" id="sort-title" name="sort-radio" value="title">
+                <label for="sort-title">Title</label>
+            </div>
+            <div class="dropdown-element">
+                <input type="radio" id="sort-date-modified" name="sort-radio" value="date-modified">
+                <label for="sort-date-modified">Date modified</label>
+            </div>
+            <div class="dropdown-element">
+                <input type="radio" id="sort-date-created" name="sort-radio" value="date-created">
+                <label for="sort-date-created">Date created</label>
+            </div>
+        </div>
+    </div>
+    <button class="top-bar-button" id="settings-button">
+        <span class="top-bar-button-content">
+            <img src="icons/settings.svg" alt="settings.svg" height="14" width="14" />
+            Settings
+        </span>
+    </button>
+</div>
+<div class="content">
+    <input type="search" id="search" placeholder="Search series..." autofocus>
+    <div class="series-cards" id="series-cards-container"></div>
+    <template id="series-card-template">
+        <div class="card">
+            <div class="content">
+                <div class="header" id="data-header"></div>
+                <div class="body" id="data-body">
+                    <span class="card-info-label" id="series-info"></span>
+                </div>
+            </div>
+            <div class="link hide" id="link-button">
+                <img src="icons/chevron-right.svg" height="17" width="17" draggable="false" />
+            </div>
+        </div>
+    </template>
+</div>
+<button class="floating-action-button" id="add-button">
+    <img src="icons/plus.svg" alt="plus.svg" height="25" width="25" />
+</button>

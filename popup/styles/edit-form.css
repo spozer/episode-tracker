@@ -15,7 +15,8 @@
   }
 }
 
-input:focus, .counter>button:hover {
+input:focus,
+.counter>button:hover {
   outline: none;
   border: 2px solid var(--accent-color);
 }
@@ -140,6 +141,7 @@ input:focus, .counter>button:hover {
   display: none !important;
 }
 
-.no-transition, .no-transition>label {
+.no-transition,
+.no-transition>label {
   transition: none !important;
 }
