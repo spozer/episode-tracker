@@ -52,20 +52,26 @@
 </div>
 <div class="content">
     <input type="search" id="search" placeholder="Search series..." autofocus>
-    <div class="series-cards" id="series-cards-container"></div>
-    <template id="series-card-template">
-        <div class="card">
-            <div class="content">
-                <div class="header" id="data-header"></div>
-                <div class="body" id="data-body">
-                    <span class="card-info-label" id="series-info"></span>
+    <div class="scroll-container">
+        <div class="series-cards" id="series-cards-container">
+            <template id="series-card-template">
+                <div class="card">
+                    <div class="content">
+                        <div class="header" id="data-header"></div>
+                        <div class="body" id="data-body">
+                            <span class="card-info-label" id="series-info"></span>
+                        </div>
+                    </div>
+                    <div class="link hide" id="link-button">
+                        <img src="icons/chevron-right.svg" height="17" width="17" draggable="false" />
+                    </div>
                 </div>
-            </div>
-            <div class="link hide" id="link-button">
-                <img src="icons/chevron-right.svg" height="17" width="17" draggable="false" />
-            </div>
+            </template>
         </div>
-    </template>
+        <div class="scrollbar">
+            <div class="scrollbar-thumb"></div>
+        </div>
+    </div>
 </div>
 <button class="floating-action-button" id="add-button">
     <img src="icons/plus.svg" alt="plus.svg" height="25" width="25" />

@@ -73,6 +73,7 @@ input[type="radio"] {
   padding-left: 30px;
   padding-top: 5px;
   padding-bottom: 5px;
+  margin-bottom: 5px;
   font-size: 12pt;
   width: 100%;
 }
@@ -82,15 +83,37 @@ input[type="radio"] {
   border-color: var(--accent-color);
 }
 
+.scroll-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.scrollbar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 5px;
+  height: 100%;
+  background: transparent;
+}
+
+.scrollbar-thumb {
+  width: 100%;
+  background: rgb(100, 100, 100);
+  border-radius: 4px;
+  position: absolute;
+  top: 0;
+  cursor: pointer;
+}
+
 .series-cards {
   display: flex;
   flex-direction: column;
   gap: 5px;
   height: 350px;
-  margin-top: 5px;
-  padding-right: 5px;
+  padding-right: 7px;
   overflow-y: scroll;
-  scrollbar-gutter: stable;
+  scrollbar-width: none;
 }
 
 .card {

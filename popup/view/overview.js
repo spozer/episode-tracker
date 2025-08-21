@@ -17,6 +17,8 @@ export class Overview extends Component {
             return;
         }
 
+        this.scrollContainer = document.querySelector('.scroll-container');
+        this.scrollbarThumb = this.scrollContainer.querySelector('.scrollbar-thumb');
         this.seriesCardTemplate = document.getElementById("series-card-template");
         this.seriesCardsContainer = document.getElementById("series-cards-container");
         this.searchInput = document.getElementById("search");
@@ -48,26 +50,51 @@ export class Overview extends Component {
         this.filterDropdown.onmouseleave = () => this.filterDropdown.classList.toggle("hide", true);
         this.sortDropdown.onmouseleave = () => this.sortDropdown.classList.toggle("hide", true);
 
+        this.scrollbarIsDragging = false;
+        this.scrollbarDragStart = 0;
+        this.scrollbarScrollStart = 0;
+        this.scrollbarThumb.onmousedown = (e) => {
+            this.scrollbarIsDragging = true;
+            this.scrollbarDragStart = e.clientY;
+            this.scrollbarScrollStart = this.seriesCardsContainer.scrollTop;
+        }
+
+        this.handleScrollbarDragging = (e) => {
+            if (!this.scrollbarIsDragging) return;
+            const deltaY = e.clientY - this.scrollbarDragStart;
+            const scrollRatio = this.seriesCardsContainer.scrollHeight / this.seriesCardsContainer.clientHeight;
+            this.seriesCardsContainer.scrollTop = this.scrollbarScrollStart + deltaY * scrollRatio;
+        }
+        document.addEventListener('mousemove', this.handleScrollbarDragging);
+
+        this.handleScrollbarDraggingStop = () => {
+            this.scrollbarIsDragging = false;
+        }
+        document.addEventListener('mouseup', this.handleScrollbarDraggingStop);
+
         this.seriesCardsContainer.onscroll = () => {
-            const scrolled = this.seriesCardsContainer.scrollTop;
+            const scrollTop = this.seriesCardsContainer.scrollTop;
+            const clientHeight = this.seriesCardsContainer.clientHeight;
+            const scrollHeight = this.seriesCardsContainer.scrollHeight;
+
+            this.renderScrollbar();
 
             if (this.scrollBefore == null) {
-                this.scrollBefore = scrolled;
+                this.scrollBefore = scrollTop;
 
-                if (scrolled > 0 &&
-                    Math.abs(this.seriesCardsContainer.scrollHeight - this.seriesCardsContainer.clientHeight - this.seriesCardsContainer.scrollTop) <= 1) {
+                if (scrollTop > 0 && Math.abs(scrollHeight - clientHeight - scrollTop) <= 1) {
                     this.addButton.classList.toggle('hide-floating-button', true);
                 }
                 return;
             }
 
-            if (this.scrollBefore > scrolled) {
+            if (this.scrollBefore > scrollTop) {
                 // scrolled up
-                this.scrollBefore = scrolled;
+                this.scrollBefore = scrollTop;
                 this.addButton.classList.toggle('hide-floating-button', false);
-            } else if (this.scrollBefore < scrolled) {
+            } else if (this.scrollBefore < scrollTop) {
                 // scrolled down
-                this.scrollBefore = scrolled;
+                this.scrollBefore = scrollTop;
                 this.addButton.classList.toggle('hide-floating-button', true);
             }
         }
@@ -82,7 +109,6 @@ export class Overview extends Component {
                 this.sortDropdown.classList.toggle("hide", true);
             }
         }
-
         document.addEventListener("click", this.handleDocumentClick);
 
         this.filterAll.onclick = (e) => this.setFilter(e.target.value);
@@ -117,6 +143,8 @@ export class Overview extends Component {
 
         window.removeEventListener("unload", this.handleWindowUnload);
         document.removeEventListener("click", this.handleDocumentClick);
+        document.removeEventListener("mousemove", this.handleScrollbarDragging);
+        document.removeEventListener("mouseup", this.handleScrollbarDraggingStop);
 
         super.unmount();
     }
@@ -125,6 +153,7 @@ export class Overview extends Component {
         this.renderFilter();
         this.renderSort();
         this.renderSeriesCards();
+        this.renderScrollbar();
     }
 
     renderFilter() {
@@ -197,6 +226,14 @@ export class Overview extends Component {
 
             this.seriesCardsContainer.append(card);
         }
+    }
+
+    renderScrollbar() {
+        const scrollTop = this.seriesCardsContainer.scrollTop;
+        const clientHeight = this.seriesCardsContainer.clientHeight;
+        const scrollHeight = this.seriesCardsContainer.scrollHeight;
+        this.scrollbarThumb.style.height = `${clientHeight * (clientHeight / scrollHeight)}px`;
+        this.scrollbarThumb.style.top = `${scrollTop * (clientHeight / scrollHeight)}px`;
     }
 
     search(searchText) {

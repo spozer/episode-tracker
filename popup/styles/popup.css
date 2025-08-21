@@ -58,7 +58,7 @@ button {
 }
 
 .content {
-  margin: 5px;
+  padding: 5px 3px 5px 3px;
   animation: fadeInAnimation 0.2s;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
