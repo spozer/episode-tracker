@@ -1,7 +1,6 @@
 import { Settings } from "../model/settings.js";
-import { StorageFactory, StorageType } from "../utils/storage.js";
 import { mergeSeries } from "../utils/helpers.js"
-import { SeriesMap, SeriesStorageManager, LAST_SERIES_CHANGE } from "../model/series.js";
+import { SeriesStorageManager, LAST_SERIES_CHANGE } from "../model/series.js";
 import { showMergePopup } from "./merge-popup.js";
 
 const IO_STATUS = {
